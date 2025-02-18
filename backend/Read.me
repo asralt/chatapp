@@ -1,0 +1,47 @@
+const express = require('express');
+const app = express();
+
+app.use(express.json()); // To parse JSON request bodies
+
+// 200 OK
+app.get('/success', (req, res) => {
+  res.status(200).json({ message: 'Request successful' });
+});
+
+// 201 Created
+app.post('/created', (req, res) => {
+  res.status(201).json({ message: 'Resource created successfully' });
+});
+
+// 400 Bad Request
+app.post('/bad-request', (req, res) => {
+  if (!req.body.name) {
+    return res.status(400).json({ error: 'Name is required' });
+  }
+  res.status(200).json({ message: 'Valid request' });
+});
+
+// 401 Unauthorized
+app.get('/unauthorized', (req, res) => {
+  res.status(401).json({ error: 'Unauthorized access' });
+});
+
+// 403 Forbidden
+app.get('/forbidden', (req, res) => {
+  res.status(403).json({ error: 'Access forbidden' });
+});
+
+// 404 Not Found
+app.use((req, res) => {
+  res.status(404).json({ error: 'Not Found' });
+});
+
+// 500 Internal Server Error
+app.get('/server-error', (req, res) => {
+  res.status(500).json({ error: 'Internal server error' });
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
