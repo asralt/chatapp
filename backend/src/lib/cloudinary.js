@@ -1,16 +1,8 @@
-import {v2 as cloudinary} from "cloudinary"
-
-import {config} from 'dotenv'
-
-dotenv.config();
+import {v2 as cloudinary} from "cloudinary";
+import {config} from "dotenv";
 
 
-if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
-    console.error("❌ Missing Cloudinary environment variables. Please check your .env file.");
-    process.exit(1); // Stop the application if variables are missing
-};
-
-
+config();
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
