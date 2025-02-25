@@ -1,36 +1,24 @@
-import React, { useEffect } from 'react'
-import Navbar from './component/Navbar'
-import {Routes,Route} from 'react-router-dom'
-import LoginPage from './pages/LoginPage'
+
+import React from 'react'
+import Navbar from './components/Navbar'
+import {Routes,Route} from "react-router-dom"
+import HomePage from '../../frontend/src/pages/HomePage'
 import SignUpPage from './pages/SignUpPage'
+import LoginPage from './pages/LoginPage'
 import SettingsPage from './pages/SettingsPage'
-import { axiostInstance } from '../lib/axios'
-import { useAuthStore, checkAuth } from './store/useAuthStore'
-
-
-const App = () => {  
-  const {authUser,checkAuth}= useAuthStore() //zustand
-  useEffect(()=>{
-    checkAuth()
-  },
-  [checkAuth]
-);
-console.log({authUser});
-
+import ProfilePage from './pages/ProfilePage'
+const App = () => {
   return (
-      <div>
-        <Navbar/>
-
-        <Routes>
-          <Route path="/" element={<HomePage/>}/>
-          <Route path="/signup" element={<SignUpPage/>}/>
-          <Route path="/login" element={<LoginPage/>}/>
-          <Route path="/SettingsPage" element={<SettingsPage/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-
-        </Routes>
-        
-      </div>
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/signup " element={<SignUpPage/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
+        <Route path="/settings" element={<SettingsPage/>}/>
+        <Route path="/profile" element={<ProfilePage/>}/>
+      </Routes>
+    </div>
   )
 }
 
