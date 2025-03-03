@@ -9,14 +9,14 @@ import cloudinary from '../lib/cloudinary.js';
 
 
 export const signup = async (req, res) => {
-    const { fullname, email, password } = req.body;
+    const { fullName, email, password } = req.body;
 
     try {
         // Validate password length
         if (!password || password.length < 6) {
             return res.status(400).json({ message: "Password must be at least 6 characters long" });
         }
-        // Check if the email already exists
+        // check if the email already exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: "Email already exists" });
@@ -28,7 +28,7 @@ export const signup = async (req, res) => {
 
         // Create a new user
         const newUser = new User({
-            fullname,
+            fullName,
             email,
             password: hashedPassword,
         });
@@ -40,7 +40,7 @@ export const signup = async (req, res) => {
         generateToken(newUser._id, res);
         res.status(201).json({
             _id: newUser._id,
-            fullname: newUser.fullname,
+            fullName: newUser.fullName,
             email: newUser.email,
             profilePic: newUser.profilePic,
         });
