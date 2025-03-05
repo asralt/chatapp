@@ -12,9 +12,11 @@ import { axiosInstance } from './lib/axios'
 import {Loader} from "lucide-react"
 import { useAuthStore } from './store/useAuthStore'
 import {Toaster} from "react-hot-toast"
+import { useThemeStore } from './store/useThemeStore'
 const App = () => {
 
  const { authUser, checkAuth,isCheckingAuth } = useAuthStore(); // ✅ Correctly calling Zustand store
+ const {theme} =  useThemeStore();
 
  useEffect(() => {
      checkAuth();
@@ -28,7 +30,7 @@ const App = () => {
     </div>
   )
   return (
-    <div>
+    <div data-theme={theme}>
       <Navbar /> 
       <Routes>
         <Route path="/" element={authUser ? <HomePage/> : <Navigate to="/login" />} />

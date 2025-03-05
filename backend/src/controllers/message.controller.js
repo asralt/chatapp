@@ -3,7 +3,7 @@ import Message from "../models/message.model.js";
 import cloudinary from "../lib/cloudinary.js";
 
 
-export const getUserForSidebar = async (req,res)=>{
+export const getUsersForSidebar = async (req,res)=>{
 
     try{
         const loggedInUserId = req.user._id;
