@@ -1,5 +1,26 @@
 {
   "dependencies": {
     "react-hot-toast": "^2.5.2"
-  }
+  },
+  "name": "chatapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "build":"",
+    "start":""
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asralt/chatapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asralt/chatapp/issues"
+  },
+  "homepage": "https://github.com/asralt/chatapp#readme",
+  "description": ""
 }
